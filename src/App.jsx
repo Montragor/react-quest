@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import LessonList from './components/LessonList'
-import { lessons } from './data/lessons'
 import GoalsCard from './components/GoalsCard'
+import QuizCard from './components/QuizCard'
+import { lessons } from './data/lessons'
+import { quizQuestions } from './data/QuizQuestions'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,13 +15,15 @@ function App() {
         <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
           <Header />
 
-         <main className="grid gap-6 lg:grid-cols-[2fr_1fr]">   
-             <LessonList lessons={lessons} />
-             <div>
-              <GoalsCard />
-             </div>
-          </main>
+          <main className="grid gap-6 lg:grid-cols-[2fr_1fr]">
+            <LessonList lessons={lessons} />
 
+            <div className="flex flex-col gap-6">
+              <GoalsCard />
+              <QuizCard questionData={quizQuestions[0]} />
+            </div>
+          </main>
+          
         </div>
       </div>
     </>
