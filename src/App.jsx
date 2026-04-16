@@ -4,13 +4,17 @@ import LessonList from './components/LessonList'
 import GoalsCard from './components/GoalsCard'
 import QuizCard from './components/QuizCard'
 import { lessons } from './data/lessons'
-import { quizQuestions } from './data/QuizQuestions'
+import { quizQuestions } from './data/quizQuestions'
 
 function App() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
   function handleNextQuestion() {
     setCurrentQuestionIndex((prev) => prev + 1)
+  }
+
+  function handleResetQuiz() {
+    setCurrentQuestionIndex(0)
   }
 
   return (
@@ -28,6 +32,7 @@ function App() {
                 questionData={quizQuestions[currentQuestionIndex]}
                 onNextQuestion={handleNextQuestion}
                 isLastQuestion={currentQuestionIndex === quizQuestions.length - 1} 
+                onResetQuiz={handleResetQuiz}
               />
             </div>
           </main>
