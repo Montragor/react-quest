@@ -4,13 +4,18 @@ import LessonList from './components/LessonList'
 import GoalsCard from './components/GoalsCard'
 import QuizCard from './components/QuizCard'
 import ProgressCard from './components/ProgressCard'
-import { lessons } from './data/lessons'
-import { quizQuestions } from './data/quizQuestions'
+import { fetchLessons, fetchQuizQuestions } from './services/api'
+
 
 function App() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [score, setScore] = useState(0)
   const [answeredCount, setAnsweredCount] = useState(0)
+  const [lessons, setLessons] = useState([])
+  const [quizQuestions, setQuizQuestions] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState("")
+
 
   function handleNextQuestion() {
     setCurrentQuestionIndex((prev) => prev + 1)
